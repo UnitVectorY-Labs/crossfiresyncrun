@@ -1,0 +1,42 @@
+/*
+ * Copyright 2024 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package com.unitvectory.crossfiresyncrun.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.unitvectory.crossfiresync.FirestoreChangePublisher;
+
+import io.cloudevents.CloudEvent;
+
+/**
+ * The Firestore event controller for the Crossfire Sync Run application.
+ * 
+ * @author Jared Hatfield (UnitVectorY Labs)
+ */
+@RestController
+public class FirestoreEventController {
+
+    @Autowired
+    private FirestoreChangePublisher firestoreChangePublisher;
+
+    @PostMapping(value = "/firestore", consumes = "application/protobuf")
+    public void handleFirestoreEvent(@RequestBody CloudEvent cloudEvent) throws InvalidProtocolBufferException {
+        // Publish the Firestore change event
+        firestoreChangePublisher.accept(cloudEvent);
+    }
+}
