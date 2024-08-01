@@ -15,25 +15,18 @@ package com.unitvectory.crossfiresyncrun.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 
-import io.cloudevents.spring.mvc.CloudEventHttpMessageConverter;
+import com.unitvectory.crossfiresync.PubSubChangeConsumer;
 
 /**
- * The Firestore event controller for the Crossfire Sync Run application.
+ * The Pub/Sub event configuration
  * 
  * @author Jared Hatfield (UnitVectorY Labs)
  */
 @Configuration
-public class CloudEventConfig {
-
+public class PubSubEventConfig {
     @Bean
-    public CloudEventHttpMessageConverter cloudEventHttpMessageConverter() {
-        return new CloudEventHttpMessageConverter();
-    }
-
-    @Bean
-    public ProtobufHttpMessageConverter protobufHttpMessageConverter() {
-        return new ProtobufHttpMessageConverter();
+    public PubSubChangeConsumer pubSubChangeConsumer(){
+        return new PubSubChangeConsumer();
     }
 }

@@ -18,11 +18,15 @@ import org.springframework.context.annotation.Configuration;
 
 import com.unitvectory.crossfiresync.FirestoreChangePublisher;
 
+/**
+ * The Firestore event configuration
+ * 
+ * @author Jared Hatfield (UnitVectorY Labs)
+ */
 @Configuration
 public class FirestoreEventConfig {
-    
     @Bean
-    public FirestoreChangePublisher firestoreChangePublisher(){
+    public FirestoreChangePublisher firestoreChangePublisher() {
         return new FirestoreChangePublisher();
     }
 }

@@ -18,28 +18,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.events.cloud.firestore.v1.DocumentEventData;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.unitvectory.crossfiresync.FirestoreChangePublisher;
+import com.unitvectory.crossfiresync.PubSubChangeConsumer;
+import com.unitvectory.crossfiresync.pubsub.model.PubSubPublish;
 
 /**
- * The Firestore event controller
+ * The Pub/Sub event controller
  * 
  * @author Jared Hatfield (UnitVectorY Labs)
  */
 @RestController
-public class FirestoreEventController {
+public class PubSubEventConsumer {
 
     @Autowired
-    private FirestoreChangePublisher firestoreChangePublisher;
+    private PubSubChangeConsumer pubSubChangeConsumer;
 
-    @PostMapping(value = "/firestore", consumes = "application/protobuf")
-    public void handleFirestoreEvent(@RequestBody byte[] data) throws InvalidProtocolBufferException {
-
-        // Parse the Firestore data
-        DocumentEventData firestoreEventData = DocumentEventData.parseFrom(data);
+    @PostMapping(value = "/pubsub", consumes = "application/json")
+    public void handleFirestoreEvent(@RequestBody PubSubPublish data) throws InvalidProtocolBufferException {
 
         // Process the request
-        firestoreChangePublisher.process(firestoreEventData, data);
+        pubSubChangeConsumer.process(data);
     }
 }
