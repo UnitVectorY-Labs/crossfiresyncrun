@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.4</version>
+        <version>3.5.5</version>
     </parent>
     <name>crossfiresyncrun</name>
     <description>Real-time synchronization between GCP Firestore instances across regions using PubSub running on Cloud Run.</description>
