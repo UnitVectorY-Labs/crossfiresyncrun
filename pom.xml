@@ -65,7 +65,7 @@
         <dependency>
             <groupId>com.unitvectory</groupId>
             <artifactId>crossfiresync</artifactId>
-            <version>0.0.6</version>
+            <version>0.0.7</version>
         </dependency>
         <!-- This is needed as it is not provided by Cloud Functions in the Cloud Run envirionment -->
         <dependency>
