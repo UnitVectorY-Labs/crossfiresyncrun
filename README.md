@@ -1,6 +1,8 @@
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Active](https://img.shields.io/badge/Status-Active-green)](https://guide.unitvectorylabs.com/bestpractices/status/#active)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Abandoned](https://img.shields.io/badge/Status-Abandoned-red)](https://guide.unitvectorylabs.com/bestpractices/status/#abandoned)
 
 # crossfiresyncrun
+
+This project is abandoned and is no longer developed or maintained. The source and published images are retained for existing deployments and historical reference. Repository archival does not retire existing deployments.
 
 Provides real-time synchronization between GCP Firestore instances across regions using Pub/Sub, packaged as a Docker image for deployment on Cloud Run.
 
